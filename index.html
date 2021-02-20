@@ -5,71 +5,59 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+  <link rel="shortcut icon" href="image/parkIcon.png" type="image/x-icon">
   <link rel="stylesheet" href="style/all.min.css">
-  <title>Taipei Park</title>
+  <title>溜小孩好去處 -new-</title>
 </head>
 
 <body>
   <div id="app">
-    <div class="container">
-      <section>
-        <div class="header">
-          <h1 class="title">{{title}}</h1>
+
+    <section>
+      <div class="header">
+        <div class="container">
+          <h1 class="title">溜小孩好去處</h1>
+          <p class="subTitle">台北市公園資訊</iv>
+          <p class="version">v1.1</p>
           <div class="inputGroup">
             <select class="select" v-model="selectUnit" @change="parkData">
               <option value="null" disabled>-- 請選擇公園管理處 --</option>
-              <option :value="park" v-for="park in parkMangement">{{park}}</option>
+              <option :value="park" v-for="park in parkMangement">{{park}}
+              </option>
             </select>
 
-            <input type="search" class="search" placeholder="請輸入鄰近公園的路名，例：永吉路" v-model.trim="search">
+            <input type="search" class="search" placeholder="請輸入鄰近公園的路名，例：永吉路"
+              v-model.trim="search">
           </div>
         </div>
-      </section>
-      <!-- card -->
-      <section>
-        <div class="cards">
-          <div class="row">
-            <div class="col-md-4 col-lg-3" v-for="item in parkData">
-              <div class="card mb-5 d-flex align-item-center">
-                <div class="card-body">
-                  <h3 class="card-title">{{item.pm_name}}</h3>
-                  <p>{{item.pm_location}}</p>
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" @click="showModal(item)" data-bs-target="#infoModalId">
-                    公園介紹
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- modal -->
-      <section>
-        <div class="modal fade" id="infoModalId" tabindex="-1" aria-labelledby="infoModal" aria-hidden="true">
-          <div class="modal-dialog" >
-            <div class="modal-content" v-for="item in parkData">
-              <div class="modal-header">
+    </section>
 
-                <h5 class="modal-title" id="infoModal">{{item.pm_name}}</h5>
-              </div>
-              <div class="modal-body">
-                {{item.pm_overview}}
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-              </div>
-            </div>
+    <!-- card -->
+    <section>
+      <div class="cards">
+        <div class="cardBody" v-for="item in parkData">
+          <div class="parkList">
+            <h2 class="parkName">{{item.pm_name}}</h2>
+            <hr>
+            <p><span class="itemName"> 公園地點：</span>
+              {{item.pm_location}}</p>
+            <p>
+              <span class="itemName">交通指南：</span>
+              {{item.pm_transit}}
+            </p>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
+
+
+
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+ 
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
   <script>
 
     const parkData = [
@@ -18534,18 +18522,35 @@
       el: '#app',
       data: {
         parkData: parkData,
-        title: '溜小孩好去處',
         search: '',
         selectUnit: '南港公園管理所',
-        parkMangement:['南港公園管理所','陽明山公園管理所','花卉試驗中心'],
+        parkMangement: ['南港公園管理所', '陽明山公園管理所', '花卉試驗中心', '園藝工程隊(東區分隊)', '園藝工程隊(西區分隊)', '園藝工程隊(南區分隊)', '園藝工程隊(北區分隊)', '園藝管理所', '青年公園管理所'],
         modal: false,
-        detail:{
-          parkInfo:''
+        closeModal: true,
+        detail: {
+          parkInfo: ''
         }
       },
       methods: {
+        parkList() {
+          this.parkData.forEach(item => {
+            if (this.selectUnit === item.pm_unit) {
+              return item;
+            }
+          })
+        },
+        filterPark() {
+          //   if (this.search) {
+          //     return this.parkData.filter(item => {
+          //       return item.pm_location.toLowerCase().indexOf(this.search.toLowerCase())
+          //     })
+          //   } else {
+          //     return this.parkData;
+          //   }
+        },
         showModal(item) {
           this.modal = true;
+          this.detail = item;
         }
       }
     })
