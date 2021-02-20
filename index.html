@@ -17,8 +17,8 @@
       <div class="header">
         <div class="container">
           <h1 class="title">溜小孩好去處</h1>
-          <p class="subTitle">台北市公園資訊</iv>
-          <p class="version">v1.1</p>
+          <p class="subTitle">台北市共有 {{parkData.length}} 座公園</p>
+          <p class="version">版本 v1.1</p>
           <div class="inputGroup">
             <select class="select" v-model="selectUnit" @change="parkData">
               <option value="null" disabled>-- 請選擇公園管理處 --</option>
@@ -28,7 +28,10 @@
 
             <input type="search" class="search" placeholder="請輸入鄰近公園的路名，例：永吉路"
               v-model.trim="search">
+
+          
           </div>
+          
         </div>
     </section>
 
@@ -55,7 +58,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
- 
+
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
   <script>

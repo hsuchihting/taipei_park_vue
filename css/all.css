@@ -13,7 +13,7 @@ body {
 }
 
 .container {
-  min-width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -21,7 +21,7 @@ body {
   background-image: url("https://images.unsplash.com/photo-1588714477688-cf28a50e94f7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
   background-position: center center;
   background-size: cover;
-  padding: 3% 0 5%;
+  padding: 3% 0;
 }
 
 @media (max-width: 768px) {
@@ -93,7 +93,7 @@ body {
   border-radius: 6px;
   border: 1px solid #333;
   width: 45%;
-  padding-left: 12px;
+  padding-left: 16px;
   font-size: 16px;
   outline: none;
 }
@@ -114,7 +114,7 @@ body {
 }
 
 .cards {
-  min-width: 100%;
+  max-width: 1200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
