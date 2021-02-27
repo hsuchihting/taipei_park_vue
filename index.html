@@ -62,7 +62,7 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
   <script>
 
-    const parkData = [
+    const originData = [
       {
         0: "157",
         pm_name: "七虎公園",
@@ -18523,7 +18523,7 @@
     let vm = new Vue({
       el: '#app',
       data: {
-        parkData: parkData,
+        parkData: originData,
         search: '',
         selectUnit: null,
         parkMangement: ['南港公園管理所', '陽明山公園管理所', '花卉試驗中心', '園藝工程隊(東區分隊)', '園藝工程隊(西區分隊)', '園藝工程隊(南區分隊)', '園藝工程隊(北區分隊)', '園藝管理所', '青年公園管理所'],
@@ -18538,7 +18538,7 @@
       },
       methods: {
         parkList() {
-          this.parkData = parkData.filter(item => {
+          this.parkData = originData.filter(item => {
             return this.selectUnit === item.pm_unit && (this.search === '' || item.pm_location.indexOf(this.search) >= 0); //找得到
           })
         },
