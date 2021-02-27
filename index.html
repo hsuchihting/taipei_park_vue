@@ -18,7 +18,7 @@
         <div class="container">
           <h1 class="title">溜小孩好去處</h1>
           <p class="subTitle">台北市共有 {{parkData.length}} 座公園</p>
-          <p class="version">版本 v1.1</p>
+          <p class="version">版本 v2.0</p>
           <div class="inputGroup">
             <select class="select" v-model="selectUnit">
               <option value="null" disabled>-- 請選擇公園管理處 --</option>
@@ -27,10 +27,10 @@
             </select>
 
             <input type="search" class="search" placeholder="請輸入鄰近公園的路名，例：永吉路"
-              v-model.trim="search" >
-         
+              v-model.trim="search">
+
           </div>
-          
+
         </div>
     </section>
 
@@ -18533,20 +18533,20 @@
           parkInfo: ''
         }
       },
-      watch:{
-        search(){
-this.parkList();
+      watch: {
+        search() {
+          this.parkList();
         },
-        selectUnit(){
-this.parkList();
+        selectUnit() {
+          this.parkList();
         }
       },
       methods: {
         parkList() {
-            this.parkData= parkData.filter(item => {
-               return this.selectUnit === item.pm_unit && (this.search === '' || item.pm_location.indexOf(this.search)>=0); //找得到
-              
-            
+          this.parkData = parkData.filter(item => {
+            return this.selectUnit === item.pm_unit && (this.search === '' || item.pm_location.indexOf(this.search) >= 0); //找得到
+
+
           })
         },
         filterPark() {
@@ -18558,7 +18558,7 @@ this.parkList();
           //     return this.parkData;
           //   }
         },
-     
+
       }
     })
 
