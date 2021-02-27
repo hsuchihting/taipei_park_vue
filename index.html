@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="image/parkIcon.png" type="image/x-icon">
   <link rel="stylesheet" href="style/all.min.css">
-  <title>溜小孩好去處 -new-</title>
+  <title>溜小孩好去處 2.0</title>
 </head>
 
 <body>
@@ -18525,13 +18525,8 @@
       data: {
         parkData: parkData,
         search: '',
-        selectUnit: '南港公園管理所',
+        selectUnit: null,
         parkMangement: ['南港公園管理所', '陽明山公園管理所', '花卉試驗中心', '園藝工程隊(東區分隊)', '園藝工程隊(西區分隊)', '園藝工程隊(南區分隊)', '園藝工程隊(北區分隊)', '園藝管理所', '青年公園管理所'],
-        modal: false,
-        closeModal: true,
-        detail: {
-          parkInfo: ''
-        }
       },
       watch: {
         search() {
@@ -18545,19 +18540,9 @@
         parkList() {
           this.parkData = parkData.filter(item => {
             return this.selectUnit === item.pm_unit && (this.search === '' || item.pm_location.indexOf(this.search) >= 0); //找得到
-
-
           })
         },
-        filterPark() {
-          //   if (this.search) {
-          //     return this.parkData.filter(item => {
-          //       return item.pm_location.toLowerCase().indexOf(this.search.toLowerCase())
-          //     })
-          //   } else {
-          //     return this.parkData;
-          //   }
-        },
+
 
       }
     })
